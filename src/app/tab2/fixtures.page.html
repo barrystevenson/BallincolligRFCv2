@@ -1,0 +1,60 @@
+<ion-content #content>
+      
+    <!--ion-card *ngFor="let match of matches; let i = index"  tappable routerLink="/../match-details-standard/{{match.id}}" id='{{i}}' [ngClass]="{'wGame': match?.team =='Women\'s','firstsGame': match?.team == '1st XV','u18sGame':match?.team == 'U-18'}"-->
+    
+    <ion-card *ngFor="let match of matches; let i = index"  tappable [routerLink]="['/../match-details','match-details-info',match.id]" id='{{i}}' [ngClass]="{'wGame': match?.team =='Women\'s','firstsGame': match?.team == '1st XV','secondsGame': match?.team == '2nd XV','u18sGame':match?.team == 'U-18'}">
+    
+         <ion-card-content>
+            <ion-grid >
+                <ion-row>
+                    <ion-col></ion-col>
+                    <ion-col></ion-col>
+                    <ion-col class="team" col-3>
+                        <font *ngIf="match?.team == 'Women\'s'; else mensGame">W </font>
+                        <ng-template #mensGame>
+                            <font>{{match?.team}} </font>
+                        </ng-template>
+                        <font *ngIf="match?.competition == 'League'; else friendlyGame">L</font>
+                        <ng-template #friendlyGame>
+                            <font *ngIf="match?.competition == 'Friendly'; else cupGame">F</font>
+                        </ng-template>
+                        <ng-template #cupGame>
+                            <font>Cup</font>
+                        </ng-template>
+                    </ion-col>
+                    <ion-col></ion-col>
+                    <ion-col></ion-col>
+                </ion-row>
+                
+                <!-- matchNotPlayed: If the match has been played then I don't want to show the day which it was played -->
+                <ion-row *ngIf="match?.homeScore != ''; else matchNotPlayed">
+                    {{match?.date.seconds * 1000 | date:'d MMM yy' }}
+                </ion-row>
+                <ng-template #matchNotPlayed>
+                    <ion-row> {{match?.date.seconds * 1000 | date:'EE d MMM yy' }}</ion-row>
+                </ng-template> 
+                <!-- matchNotPlayed: End -->
+                
+                <!-- noScoreReceived: If the match has been played and scores updated then display scores else show 'v' between team names-->
+                <ion-row *ngIf="match?.homeScore != ''; else noScoreReceived" border="solid">
+                    <ion-col>{{match?.home}}</ion-col>
+                    <ion-col>{{match?.homeScore}} - {{match?.awayScore}}</ion-col> 
+                    <ion-col> {{match?.away}}</ion-col>
+                </ion-row>
+                
+                <ng-template #noScoreReceived>
+                    <ion-row>
+                        <ion-col>{{match?.home}}</ion-col> 
+                        <ion-col> v </ion-col>
+                        <ion-col> {{match?.away}}</ion-col>
+                    </ion-row>
+                    
+                </ng-template> 
+               <!-- noScoreReceived -->
+                
+                <ion-row> {{match?.date.seconds * 1000 | date:'h:mm a' }}</ion-row>
+            </ion-grid>    
+        </ion-card-content>
+    </ion-card>
+    
+</ion-content>

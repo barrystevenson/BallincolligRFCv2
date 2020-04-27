@@ -5,7 +5,15 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  }
+  },
+  {
+    path: 'match-details/:id',
+    loadChildren: () => import('./pages/match-details/match-details.module').then( m => m.MatchDetailsPageModule)
+  },
+  /*{
+    path: 'match-details-info',
+    loadChildren: () => import('./pages/match-details-info/match-details-info.module').then( m => m.MatchDetailsInfoPageModule)
+  }*/
 ];
 @NgModule({
   imports: [

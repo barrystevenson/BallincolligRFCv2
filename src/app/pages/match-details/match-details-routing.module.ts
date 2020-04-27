@@ -1,30 +1,30 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TabsPage } from './tabs.page';
+import { MatchDetailsPage } from './match-details.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
-    component: TabsPage,
+    path: 'match-details',
+    component: MatchDetailsPage,
     children: [
       {
-        path: 'fixtures',
-        loadChildren: () => import('../tab2/fixtures.module').then(m => m.FixturesPageModule)
+        path: 'match-details-info/:id',
+          loadChildren: () => import('../match-details-info/match-details-info.module').then(m => m.MatchDetailsInfoPageModule)
       },
-      {
+      /*{
         path: 'players',
         loadChildren: () => import('../tab3/players.module').then(m => m.PlayersPageModule)
-      },
+      },*/
       {
         path: '',
-        redirectTo: '/tabs/fixtures',
+        redirectTo: '/match-details/match-details-info',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/fixtures',
+redirectTo: '/match-details/match-details-info',
     pathMatch: 'full'
   }
 ];
@@ -33,4 +33,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class MatchDetailsPageRoutingModule {}

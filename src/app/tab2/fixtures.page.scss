@@ -1,0 +1,55 @@
+ion-card{
+   
+
+}
+
+ion-row {
+    justify-content: center;
+}
+
+.team{
+    background-color: black;
+    color: gold;
+    ion-col {
+        font-size: small;}
+}
+
+.score{
+    background-color: darkgrey;
+    --ion-grid-column-padding: 50px;
+}
+
+.firstsGame{
+    ion-card{
+        border-top-color: red;
+    }
+}
+
+.secondsGame
+    {
+      font-weight: bold;
+      border-top: 2px solid;
+      border-top-color: yellow;   
+    }
+
+
+.wGame 
+    {
+      font-weight: bold;
+      border-top: 2px solid;
+      border-top-color: blue;    
+    }
+  
+.firstsGame 
+    {
+      font-weight: bold;
+      border-top: 2px solid;
+      border-top-color: red;    
+    }
+
+.u18sGame 
+    {
+      font-weight: bold;
+      border-top: 2px solid;
+      border-top-color: green;    
+    }

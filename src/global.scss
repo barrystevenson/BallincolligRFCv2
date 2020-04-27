@@ -24,3 +24,42 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+ion-title {
+    text-align: center;
+    color: gold;
+}
+
+ion-card {
+    text-align: center;
+}
+
+ion-card-title {
+    text-align: center;
+}
+
+ion-toolbar {
+     background-color: black;
+}
+
+ion-label {
+    text-overflow: inherit;
+    white-space: normal;
+}
+
+.ion-icon-toolbar {
+    
+    ion-icon
+        {
+        color: gold;
+        }
+    ion-toolbar{
+        color: black;
+    }
+}
+
+ion-button {
+    color: gold;
+    background-color: black;
+}
